@@ -107,6 +107,12 @@ PRODUCT_PACKAGES += \
     NfcNci \
     Tag
 
+# Insecure ADBD
+# (ro.adb.secure=3)
+ADDITIONAL_DEFAULT_PROPERTIES += \
+	ro.adb.secure=0 \
+	persist.service.adb.enable=1
+
 # NFC feature files + configuration
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \

@@ -28,6 +28,9 @@ BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=mako lpj=67677 user_debug=31
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01600000
 
+# Assert
+TARGET_OTA_ASSERT_DEVICE := mako
+
 # Try to build the kernel
 TARGET_KERNEL_SOURCE := kernel/lge/mako
 TARGET_KERNEL_CONFIG := cyanogen_mako_defconfig
@@ -78,7 +81,7 @@ ifeq ($(HOST_OS),linux)
   ifeq ($(TARGET_BUILD_VARIANT),user)
     ifeq ($(WITH_DEXPREOPT),)
       WITH_DEXPREOPT := true
-    endif
+   endif
   endif
 endif
 WITH_DEXPREOPT_BOOT_IMG_ONLY ?= true

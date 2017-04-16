@@ -15,7 +15,7 @@
 #
 $(call inherit-product, device/lge/mako/full_mako.mk)
 
-PRODUCT_NAME := cos_mako
+PRODUCT_NAME := aosp_mako
 PRODUCT_MODEL := Nexus 4
 PRODUCT_CHARACTERISTICS := phone
 PRODUCT_BRAND := Android
@@ -23,7 +23,7 @@ PRODUCT_DEVICE := mako
 PRODUCT_MANUFACTURER := LGE
 PRODUCT_RESTRICT_VENDOR_FILES := false
 
-$(call inherit-product, vendor/cos/common.mk)
+$(call inherit-product, vendor/aosp/common.mk)
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1280

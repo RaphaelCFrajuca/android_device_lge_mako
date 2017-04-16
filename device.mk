@@ -129,6 +129,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	persist.audio.fluence.mode=endfire \
 	persist.audio.lowlatency.rec=false
 
+# Set ro.extended.display.version
+#PRODUCT_PROPERITY_OVERRIDES += \
+#	ro.extended.display.version=AospExtended-v2.0-UNOFFICIAL
 
 # Do not power down SIM card when modem is sent to Low Power Mode.
 PRODUCT_PROPERTY_OVERRIDES += \

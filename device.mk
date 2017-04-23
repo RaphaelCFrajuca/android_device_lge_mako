@@ -20,7 +20,18 @@
 # Everything in this directory will become public
 
 # Use pre-compiled kernel
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+ifeq ($(USE_SVELTE_KERNEL),true)
+LOCAL_KERNEL := device/lge/mako_svelte-kernel/kernel
+else
 LOCAL_KERNEL := device/lge/mako-kernel/kernel
+endif
+else
+LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+endif
+
+PRODUCT_COPY_FILES := \
+$(LOCAL_KERNEL):kernel
 
 DEVICE_PACKAGE_OVERLAYS := device/lge/mako/overlay
 

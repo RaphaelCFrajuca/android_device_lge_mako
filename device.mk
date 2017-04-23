@@ -19,6 +19,9 @@
 #
 # Everything in this directory will become public
 
+# Use pre-compiled kernel
+LOCAL_KERNEL := device/lge/mako-kernel/kernel
+
 DEVICE_PACKAGE_OVERLAYS := device/lge/mako/overlay
 
 PRODUCT_AAPT_PREF_CONFIG := xhdpi

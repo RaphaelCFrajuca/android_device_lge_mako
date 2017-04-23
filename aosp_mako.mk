@@ -23,7 +23,8 @@ PRODUCT_DEVICE := mako
 PRODUCT_MANUFACTURER := LGE
 PRODUCT_RESTRICT_VENDOR_FILES := false
 
-$(call inherit-product, vendor/aosp/common.mk)
+# AOSP don't use any vendor file
+#$(call inherit-product, vendor/aosp/common.mk)
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1280

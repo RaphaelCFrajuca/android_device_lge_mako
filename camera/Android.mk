@@ -30,6 +30,12 @@ ifeq ($(USE_DEVICE_SPECIFIC_CAMERA),true)
         LOCAL_CFLAGS += -DUSE_ION
       endif
 
+      # Starting from Android 7.0, camera and encoder are in separated processes. 
+      # Use NativeHandleSource instead of CameraSource for metadata
+      ifeq ($(TARGET_USES_MEDIA_EXTENSIONS),true)
+        LOCAL_CFLAGS += -DUSE_NATIVE_HANDLE_SOURCE
+      endif
+
       LOCAL_CFLAGS += -DCAMERA_ION_HEAP_ID=ION_IOMMU_HEAP_ID
       LOCAL_CFLAGS += -DCAMERA_ZSL_ION_HEAP_ID=ION_IOMMU_HEAP_ID
       ifeq ($(TARGET_BOARD_PLATFORM),msm8960)
@@ -89,18 +95,15 @@ ifeq ($(USE_DEVICE_SPECIFIC_CAMERA),true)
       #LOCAL_CFLAGS+= -DCAMERA_SMOOTH_ZOOM
 
       ifeq ($(V4L2_BASED_LIBCAM),true)
-        LOCAL_C_INCLUDES+= $(call project-path-for,qcom-media)/mm-core/inc
+        LOCAL_C_INCLUDES+= hardware/qcom/media/mm-core/inc
         LOCAL_C_INCLUDES+= $(LOCAL_PATH)/mm-camera-interface
       endif
 
-      LOCAL_C_INCLUDES+= $(call project-path-for,qcom-display)/libgralloc
-      LOCAL_C_INCLUDES+= $(call project-path-for,qcom-display)/libgenlock
+      LOCAL_C_INCLUDES+= hardware/qcom/display/msm8960/libgralloc
+      LOCAL_C_INCLUDES+= hardware/qcom/display/msm8960/libgenlock
       LOCAL_C_INCLUDES+= frameworks/native/include/media/hardware
-      LOCAL_C_INCLUDES+= $(call project-path-for,qcom-media)/libstagefrighthw
+      LOCAL_C_INCLUDES+= hardware/qcom/media/msm8974/libstagefrighthw
 
-      LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
-      LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include/media
-      LOCAL_ADDITIONAL_DEPENDENCIES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
 
       ifeq ($(V4L2_BASED_LIBCAM),true)
         LOCAL_SHARED_LIBRARIES:= libutils libui libcamera_client libcamera_metadata liblog libcutils

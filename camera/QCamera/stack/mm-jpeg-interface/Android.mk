@@ -22,6 +22,7 @@ LOCAL_SRC_FILES := \
     src/mm_jpeg_interface.c
 
 LOCAL_MODULE           := libmmjpeg_interface
+LOCAL_PRELINK_MODULE   := false
 LOCAL_SHARED_LIBRARIES := libdl libcutils liblog
 LOCAL_MODULE_TAGS := optional
 
